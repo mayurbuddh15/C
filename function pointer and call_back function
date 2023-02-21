@@ -1,0 +1,37 @@
+   #include<stdio.h>
+   struct st{
+           int i;
+   };
+   void my_scan(struct st *);
+   void my_print(struct st *);
+   void display(struct st *,void(*fp)(struct st *));
+ 
+ 
+   void main(){                                            // this is main function
+ 
+           struct st s1[2];
+           void (*fp)(struct st *p)=&my_scan;
+          display(s1,my_scan);
+ 
+   }
+   void my_scan(struct st *p)                              // defination of the scan function
+   {
+           for(int a=0;a<2;a++)
+ 
+          {
+                  scanf("%d",&p[a].i);
+          }
+  void(*fp)(struct st *p)=&my_print;
+  (*fp)(p);
+ 
+ 
+   }
+   void my_print(struct st *p)                             //defination of the print funciton
+   {
+          for(int a=0;a<2;a++)
+                 printf("%d",p[a].i);
+ }
+  void display(struct st *p1,void(*fp)(struct st *p))
+  {
+  (*fp)(p1);
+  }
